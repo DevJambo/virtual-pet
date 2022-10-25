@@ -1,4 +1,4 @@
-const Pet = require('./src/pet');
+const Pet = require('../src/pet');
 
 describe('constructor', () => {
     it('returns an object', () => {
@@ -100,5 +100,43 @@ describe('constructor', () => {
       pet.feed();
   
       expect(pet.hunger).toEqual(0);
+    });
+  });
+
+  describe('checkUp', () => {
+    it('if pet fitness is 3 or less and pet hunger is 5 or more returns "I am hungry AND I need a walk"', () => {
+      const pet = new Pet('Fido');
+      pet.growUp();
+      pet.growUp();
+      pet.growUp();
+      pet.checkUp();
+      expect(pet.checkUp()).toEqual("I am hungry AND I need a walk");
+    });
+    it('if pet hunger is 5 or more returns "I am hungry"', () => {
+      const pet = new Pet('Fido');
+      pet.growUp();
+      pet.checkUp();
+  
+      expect(pet.checkUp()).toEqual("I am hungry");
+    });
+    it('if pet fitness is 3 or less returns "I need a walk"', () => {
+      const pet = new Pet('Fido');
+      pet.growUp();
+      pet.feed();
+      pet.growUp();
+      pet.feed();
+      pet.growUp();
+      pet.feed();
+      pet.feed();
+      pet.checkUp()
+  
+      expect(pet.checkUp()).toEqual("I need a walk");
+    });
+    it('if pet fitness is above 3 and pet hunger is below 5 return "I feel great!"', () => {
+      const pet = new Pet('Fido');
+
+      pet.checkUp()
+  
+      expect(pet.checkUp()).toEqual("I feel great!");
     });
   });
