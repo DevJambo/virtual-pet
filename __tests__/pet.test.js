@@ -76,3 +76,29 @@ describe('constructor', () => {
       expect(pet.fitness).toEqual(10);
     });
   });
+
+  describe('feed', () => {
+    it('decreases hunger by 3, minimum is 0', () => {
+      const pet = new Pet('Fido');
+      pet.growUp();
+      pet.feed();
+  
+      expect(pet.hunger).toEqual(2);
+    });
+    it('decreases hunger by 3, minimum is 0', () => {
+      const pet = new Pet('Fido');
+      pet.growUp();
+      pet.feed();
+      pet.growUp();
+  
+      expect(pet.hunger).toEqual(7);
+    });
+    it('decreases hunger by 3, minimum is 0', () => {
+      const pet = new Pet('Fido');
+      pet.growUp();
+      pet.feed();
+      pet.feed();
+  
+      expect(pet.hunger).toEqual(0);
+    });
+  });
